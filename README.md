@@ -27,11 +27,10 @@ Durante el desarrollo del proyecto se incorporarán progresivamente nuevas tecno
 
 Actualmente:
 - HTML5
+- JavaScript
 
 Próximamente:
 - CSS3
-
-- JavaScript
 
 - React
 
@@ -43,7 +42,8 @@ Próximamente:
 
 ## Estado del proyecto
 
-🚧 En desarrollo.
+- Versión: 
+Clase 02
 
 ## Autor
 Schneeberger Alison
