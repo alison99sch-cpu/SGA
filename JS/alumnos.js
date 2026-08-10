@@ -100,6 +100,16 @@ async function obtAlumnos() {
 
 function mostrarAlumnos(alumnos){
  console.table(alumnos)
+
+console.log(typeof alumnos)
+localStorage.setItem("alumnos", JSON.stringify(alumnos))
+const datos = localStorage.getItem("alumnos") //Convertir de object a string
+
+const alumnosRecup = JSON.parse(datos) //Convertir de string a object
+console.log(typeof alumnosRecup)
+console.table(alumnosRecup)
+
+
  console.log()
  console.log(alumnos[0])//Opción 1: muestra de a un elemento
 
@@ -164,4 +174,8 @@ function inic(){
 obtenerComent()
 mostrarComent()
 init()
+
+// 10/08/2026
+
+
 
