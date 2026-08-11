@@ -175,7 +175,61 @@ obtenerComent()
 mostrarComent()
 init()
 
-// 10/08/2026
+// 11/08/2026 proyecto proyecto
+const formulario = document.querySelector(#formAlumno)
+
+formulario.addEventListener("submit", function(event){
+    event.preventDefault();
+
+
+const nombre = document.querySelector("#nombre").value
+const carrera = document.querySelector("#carerra").value
+const correo = document.querySelector("#correo").value
+
+const alumno = {
+    id: Date.now(),//Para generar un número unico internamente.
+    nombre: nombre,
+    carrera: carrera,
+    correo: correo
+}
+
+const alumnos = obtenerAlumnos()
+alumnos.push(alumno)
+
+localStorage.setItem("alumnos", JSON.stringify(alumnos))
+
+mostrarAlumnos(alumnos)
+
+formulario.reset();
+
+});
+
+
+function obtenerAlumnos(){
+    const datos = localStorage.getItem("alumnos")
+    if (datos){
+        return JSON.parse(datos)
+    }
+    return [] //Evita que me devuelva null.
+}
+
+const listaAlumnos = document.querySelector("#listaAlumno")
+
+
+function mostrarAlumnos(alumos){
+listaAlumnos.innerHTML = ""
+for (const alumno of alumnos) {
+    listaAlumnos.innerHTML += `<li>
+    ${alumno.nombre} -
+    ${alumno.carrera} -
+    ${alumno.correo}
+    <li>`;
+}
+}
+
+
+
+
 
 
 
