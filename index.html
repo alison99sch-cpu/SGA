@@ -4,12 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="JS/alumnos.js" defer></script>
+    <link rel="stylesheet" href="CSS/styles.css">
     <title>SGA</title>
 </head>
-<body>
 
-    <h1>Sistema de Gestión Académica</h1>
-    
+
+<body>
+    <header> 
+   <h1>Sistema de Gestión Académica</h1>
+    </header> 
+
+
+     <main>
+
+    <section class="formulario">
     <h2>Alta de alumno</h2>
     <form id="formAlumno">
         <label for="nombre">Nombre</label>
@@ -25,11 +33,35 @@
         <br><br>
 
         <button type="submit">Guardar</button>
-          <hr>
-          <h2>Alumnos registrados</h2>
-          <ul id="listaAlumnos"></ul>
 
     </form>
-    
+    </section>
+
+      <p id="mensaje"></p>
+     
+    <section>
+          <h2>Alumnos registrados</h2>
+          <p id="cantidadAlumnos"></p>
+          <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Carrera</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="listaAlumno"></tbody>
+          </table>
+    </section>
+
+    </main>
+
 </body>
+
+<footer>
+
+</footer>
+
 </html>
