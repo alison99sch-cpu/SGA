@@ -67,3 +67,33 @@ th, td {
 th {
     background-color: rgb(95, 189, 158);
 }
+
+.msj-exito {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 9px;
+    background-color: rgb(168, 245, 154);
+    color: rgb(16, 85, 35);
+    box-shadow: 0 4px 10 px rgb(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+.oculto {
+    display: none;
+}
+
+.msj-error {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    font-weight: bold;
+    padding: 15px 20px;
+    border-radius: 9px;
+    background-color: rgb(245, 171, 154);
+    color: rgb(85, 22, 16);
+    box-shadow: 0 4px 10 px rgb(0, 0, 0, 0.15);
+    z-index: 1000;
+}
