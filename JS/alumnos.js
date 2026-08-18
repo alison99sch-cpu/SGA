@@ -289,7 +289,7 @@ function eliminarAlumno(id) {
         alumnoEditandoId = null
         formulario.querySelector("button").textContent = "Guardar"
     }
-    
+
     mostrarMensaje("Alumno eliminado correctamente", "msj-exito")
 }
 
@@ -304,7 +304,7 @@ listaAlumnos.addEventListener("click", (e) => {
 
     if (e.target.classList.contains("btn-editar")) {
        const id = Number(e.target.dataset.id)
-        if (confirmar) { //Significa "Si confirmar es verdadero" no hace falta escribir si "confirmar == true".
+        if (confirmar) { //Significa "Si confirmar es verdadero" no hace falta escribir  "confirmar == true".
         eliminarAlumno(id)
         }
        
