@@ -265,8 +265,8 @@ function mostrarAlumnos(alumos) {
         <td>${alumno.carrera}</td>
         <td>${alumno.correo}</td>
         <td> 
-        <button class="btn-editar" data-id="${alumno.id}">Editar</button>
-        <button class="btn-eliminar" data-id="${alumno.id}">Eliminar</button>
+        <button class="btn-editar" data-id="${alumno.id}" title="Editar alumno" ><i class="fa-solid fa-pen"></i></button> 
+        <button class="btn-eliminar" data-id="${alumno.id}" title="Eliminar alumno" ><i class="fa-solid fa-trash"></i></button>
         </td>
     <tr>
     `;
@@ -284,19 +284,36 @@ function eliminarAlumno(id) {
     localStorage.setItem("alumnos", JSON.stringify(alumnosActualizados))
 
     mostrarAlumnos(alumnosActualizados)
+    if(alumnoEditandoId== id){
+        formulario.reset()
+        alumnoEditandoId = null
+        formulario.querySelector("button").textContent = "Guardar"
+    }
+    
     mostrarMensaje("Alumno eliminado correctamente", "msj-exito")
 }
 
 
 listaAlumnos.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-eliminar")) {
-        const id = Number(e.target.dataset.id)
+    const boton_el = e.target.closest(".btn-eliminar")
+    const confirmar = confirm("¿Está seguro de que desea eliminar este alumno?")
+    if (boton_el) {
+        const id = Number(boton_el.dataset.id)
         eliminarAlumno(id)
     }
 
     if (e.target.classList.contains("btn-editar")) {
-        const id = Number(e.target.dataset.id)
+       const id = Number(e.target.dataset.id)
+        if (confirmar) { //Significa "Si confirmar es verdadero" no hace falta escribir si "confirmar == true".
+        eliminarAlumno(id)
+        }
+       
+
+        const boton_ed = e.target.closest(".btn-editar")
+       if(boton_ed){
+        const id = Number(boton_ed.dataset.id)
         editarAlumno(id)
+       }
     }
 })
 
@@ -308,6 +325,7 @@ function editarAlumno(id) {
     Document.querySelector("#correo").value = alumno.correo;
     alumnoEditandoId = id;
     formulario.querySelector("button").textContent = "Actualizar alumno"
+    document.querySelector("#nombre").focus()
 
 }
 
