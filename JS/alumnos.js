@@ -1,4 +1,4 @@
-const alumnos = [
+/*const alumnos = [
     {
         id: 1,
         nombre: "Luz",
@@ -166,7 +166,7 @@ function mostrarComent() {
     }
 }
 
-/*function inic() {
+function inic() {
     const comentarios = await obtenerComent()
     console.table(comentarios)
 }
@@ -177,16 +177,19 @@ init()
 */
 
 // 11/08/2026 proyecto proyecto
-const formulario = document.querySelector("#formAlumno")
+const formulario = document.querySelector("#formulario")
 const mensaje = document.querySelector("#mensaje")
+// ...
 let alumnoEditandoId = null;
+
+
 
 formulario.addEventListener("submit", function (event) {
     event.preventDefault();
 
 
     const nombre = document.querySelector("#nombre").value.trim()
-    const carrera = document.querySelector("#carerra").value.trim()
+    const carrera = document.querySelector("#carrera").value.trim()
     const correo = document.querySelector("#correo").value.trim()
     if (nombre === "" || carrera === "" || correo === ""){
        mostrarMensaje("Todos los campos son obligatorios!!!", "msj-error")
@@ -202,10 +205,10 @@ formulario.addEventListener("submit", function (event) {
    return
    }
 
-    const alumnos = obtenerAlumnos()
+    const alumnos = obtAlumnos()
 
 
-    if (alumno === null) {
+    if (alumnoEditandoId === null) {
 
         const alumno = {
             id: Date.now(),//Para generar un número unico internamente.
@@ -215,7 +218,7 @@ formulario.addEventListener("submit", function (event) {
         }
 
 
-        mostrarMensaje("Alumno guardado correctamente");
+        mostrarMensaje("Alumno guardado correctamente", "msj-exito");
         alumnos.push(alumno)
     } else {
         const alumno = alumnos.find(alumno => alumno.id === alumnoEditandoId)
@@ -245,7 +248,7 @@ function mostrarMensaje(texto, clase) {
 }
 
 
-function obtenerAlumnos() {
+function obtAlumnos() {
     const datos = localStorage.getItem("alumnos")
     if (datos) {
         return JSON.parse(datos)
@@ -256,7 +259,7 @@ function obtenerAlumnos() {
 const listaAlumnos = document.querySelector("#listaAlumno")
 
 
-function mostrarAlumnos(alumos) {
+function mostrarAlumnos(alumnos) {
     listaAlumnos.innerHTML = ""
     for (const alumno of alumnos) {
         listaAlumnos.innerHTML += `
@@ -277,7 +280,7 @@ function mostrarAlumnos(alumos) {
 
 
 function eliminarAlumno(id) {
-    const alumnos = obtenerAlumnos
+    const alumnos = obtAlumnos
     const alumnosActualizados = alumnos.filter(
         alumno => alumno.id !== id
     );
@@ -330,5 +333,5 @@ function editarAlumno(id) {
 
 }
 
-const alumno = obtAlumnos() //Esto y la línea de abajo tienen la función de mostrar la tabla ni bien se ingresa
+const alumnos = obtAlumnos() //Esto y la línea de abajo tienen la función de mostrar la tabla ni bien se ingresa
 mostrarAlumnos(alumnos)

@@ -29,7 +29,7 @@ nav a {
 }
 
 nav a.activo {
-    background-color: rgb(160, 49, 49);
+    background-color: rgb(231, 199, 199);
 }
 
 main {
@@ -198,22 +198,23 @@ margin-bottom: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 25px;
+    border-radius: 20px;
 }
 
 .tarjeta {
     display: block;
     text-decoration: none;
     background-color: rgb(78, 165, 136);
-    color: #333;
+    color: #d1e4de;
     padding: 35px 25px;
-    border-radius: 12 px;
-    box-shadow: 0 2px 8px rgba (0, 0, 0, 0.08);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgb(0, 0, 0, 0.08);
     transition: transform 0.2, box-shadow 0,2s;
 }
 
 .tarjeta:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12)
+    box-shadow: 0 6px 15px rgb(0, 0, 0, 0.12)
 }
 
 .tarjeta i {
@@ -227,7 +228,7 @@ color:rgb(155, 230, 205)
 }
 
 .tarjeta p {
-    color: #777;
+    color: #000000;
 }
 
 .tarjeta-deshabilitada {

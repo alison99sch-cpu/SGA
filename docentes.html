@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="CSS/styles.css">
-     <link rel="stylesheet" href="https://cdnjs.cloundflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <script src="JS/docentes.js" defer></script>
     <title>Gestión docentes</title>
 </head>
@@ -19,29 +20,52 @@
 
 
     <main>
-      <section class="formul">
-
-        <h2>Cargar datos docentes</h2>
+      <h1>Gestión de docentes</h1>
+      <section class="formulario-container">
+       <h2>Alta de docentes</h2>
 
      <form id="Formulario">
+      <div class="campo">
       <label for="nombre">Nombre</label>
       <input type="text">
-       <br><br>
-
+      </div>
+       
+      <div class="campo">
       <label for="especialidad">Especialidad</label>
       <input type="text">
-      <br><br>
-      
+       </div>
+
+      <div class="campo">
       <label for="correo">Correo electrónico</label>
       <input type="email">
-      <br><br>
+      </div>
 
       <button type="submit">Guardar</button>
         
      </form>
      </section>
+
+     <section class="lista-container">
+                <h2>Docentes registrados</h2>
+                <p id="cantidadDocentes"></p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Especialidad</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAlumno"></tbody>
+                </table>
+            </section>
+
+            <div id="mensaje" class="mensaje"></div>
     </main>
  
-  <footer></footer>  
+  
 </body>
 </html>
