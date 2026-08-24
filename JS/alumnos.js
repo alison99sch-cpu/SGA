@@ -166,7 +166,7 @@ function mostrarComent() {
     }
 }
 
-function inic() {
+/*function inic() {
     const comentarios = await obtenerComent()
     console.table(comentarios)
 }
@@ -174,6 +174,7 @@ function inic() {
 obtenerComent()
 mostrarComent()
 init()
+*/
 
 // 11/08/2026 proyecto proyecto
 const formulario = document.querySelector("#formAlumno")
@@ -234,12 +235,12 @@ formulario.addEventListener("submit", function (event) {
     formulario.reset();
 });
 
-function mostrarMensaje(texto, tipo) {
+function mostrarMensaje(texto, clase) {
     mensaje.textContent = texto;
-    mensaje.className = tipo
+    mensaje.className = `mensaje ${clase}`
+    mensaje.computedStyleMap.display = "block" //Para que se muestre el msj
     setTimeout(() => {
-        mensaje.textContent = " ";
-        mensaje.className = "oculto"
+        mensaje.style.display = "none"
     }, 3000);
 }
 
@@ -329,5 +330,5 @@ function editarAlumno(id) {
 
 }
 
-const alumnos = obtAlumnos() //Esto y la línea de abajo tienen la función de mostrar la tabla ni bien se ingresa
+const alumno = obtAlumnos() //Esto y la línea de abajo tienen la función de mostrar la tabla ni bien se ingresa
 mostrarAlumnos(alumnos)

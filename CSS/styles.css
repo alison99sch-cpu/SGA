@@ -6,19 +6,44 @@ body {
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     background-color: rgb(243, 242, 210);
+    color: rgb(12, 12, 12);
 }
 
 header {
     background-color: rgb(122, 37, 47);
-    color: rgb(242, 242, 200);
-    padding: 20px;
-    text-align: center;
+}
+
+nav {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 18px 20px;
+    transition: background-color rgb(0, 0, 0);
+}
+
+nav a.activo {
+    background-color: rgb(160, 49, 49);
 }
 
 main {
-    width: 90%;
-    max-width: 1000px;
-    margin: 30px auto;
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+h1 {
+    margin-bottom: 30px;
+}
+
+h2 {
+    margin-top: 0;
 }
 
 section {
@@ -28,16 +53,45 @@ section {
     border-radius: 8px;
 }
 
+.formulario-container {
+background-color: rgb(182, 239, 221);
+padding: 25px;
+border-radius: 10px;
+margin-bottom: 30px;
+box-shadow: 0 2px 8px rgb(0, 0, 0, 0.08);
+}
+
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: grid;
+    gap: 20px;
 }
 
 input {
     padding: 10px;
     border: 1px solid beige;
     border-radius: 5px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.campo label {
+    font-weight: bold;
+}
+
+.campo input {
+    padding: 10px;
+    border: 1px solid white;
+    font-size: 16px;
+}
+
+.campo input:focus {
+    outline: none;
+    border-color: brown;
+    box-shadow: 0 0 0 5px rgb(228, 164, 164);
 }
 
 button {
@@ -47,10 +101,18 @@ button {
     cursor: pointer;
     background-color: rgb(106, 197, 166);
     color: beige;
+    font-size: 15px;
 }
 
-form button {
-    margin-top: 10px;
+button:hover {
+    background-color: rgb(8, 44, 46);
+}
+
+.lista-container {
+    background-color: rgb(172, 229, 210);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgb(8, 44, 46) ;
 }
 
 table {
@@ -68,34 +130,27 @@ th {
     background-color: rgb(95, 189, 158);
 }
 
-.msj-exito {
+
+ 
+.mensaje {
     position: fixed;
     top: 20px;
     right: 20px;
     font-weight: bold;
     padding: 15px 20px;
     border-radius: 9px;
-    background-color: rgb(168, 245, 154);
-    color: rgb(16, 85, 35);
-    box-shadow: 0 4px 10 px rgb(0, 0, 0, 0.15);
-    z-index: 1000;
-}
-
-.oculto {
+    background-color: rgb(167, 219, 227);
+    color: rgb(8, 44, 46);
     display: none;
+    z-index: 1000;
 }
 
 .msj-error {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    font-weight: bold;
-    padding: 15px 20px;
-    border-radius: 9px;
     background-color: rgb(245, 171, 154);
-    color: rgb(85, 22, 16);
-    box-shadow: 0 4px 10 px rgb(0, 0, 0, 0.15);
-    z-index: 1000;
+}
+
+.msj-exito {
+    background-color: rgb(168, 245, 154);
 }
 
 .btn-editar, .btn-eliminar {
@@ -127,4 +182,60 @@ th {
 .btn-eliminar:hover {
     background-color: rgb(212, 137, 137);
     color:  rgb(200, 0, 0);
+}
+
+.inicio {
+    text-align: center;
+    max-width: 1100px;
+}
+
+.inicio > p {
+margin-bottom: 40px;
+
+}
+
+.modulos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.tarjeta {
+    display: block;
+    text-decoration: none;
+    background-color: rgb(78, 165, 136);
+    color: #333;
+    padding: 35px 25px;
+    border-radius: 12 px;
+    box-shadow: 0 2px 8px rgba (0, 0, 0, 0.08);
+    transition: transform 0.2, box-shadow 0,2s;
+}
+
+.tarjeta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12)
+}
+
+.tarjeta i {
+font-size: 40px;
+margin-bottom: 15px;
+color:rgb(155, 230, 205)
+}
+
+.tarjeta h2 {
+    margin: 10px 0;
+}
+
+.tarjeta p {
+    color: #777;
+}
+
+.tarjeta-deshabilitada {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.tarjeta-deshabilitada:hover {
+transform: none;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }

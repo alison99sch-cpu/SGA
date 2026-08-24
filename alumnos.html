@@ -1,69 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <script src="JS/alumnos.js" defer></script>
-    <link rel="stylesheet" href="CSS/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloundflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <title>Gestión alumnos</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="JS/alumnos.js" defer></script>
+        <link rel="stylesheet" href="CSS/styles.css">
+        <link rel="stylesheet"
+            href="https://cdnjs.cloundflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <title>Gestión alumnos</title>
+    </head>
 
-<body>
-     <header> 
-     <nav>
-            <a href="index.html">Inicio</a>
-            <a href="alumnos.html">Alumnos</a>
-            <a href="docentes.html">Docentes</a>
-    </nav>
-    </header> 
+    <body>
+        <header>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="alumnos.html">Alumnos</a>
+                <a href="docentes.html">Docentes</a>
+            </nav>
+        </header>
 
+        <main>
+            <h1>Gestión de alumnos</h1>
+            <section class="formulario-container">
+                <h2>Alta de alumno</h2>
+                <form id="formulario">
+                    <div class="campo">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" id="nombre">
+                    </div>
 
-     <main>
+                    <div class="campo">
+                        <label for="carrera">Carrera</label>
+                        <input type="text" id="carrera">
+                    </div>
 
-    <section class="formulario">
-    <h2>Alta de alumno</h2>
-    <form id="formAlumno">
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre">
-        <br><br>
+                    <div class="campo">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="text" id="correo">
+                    </div>
 
-        <label for="carrera">Carrera</label>
-        <input type="text" id="carrera">
-        <br><br>
+                    <button type="submit">Guardar</button>
 
-        <label for="correo">Correo electrónico</label>
-        <input type="text" id="correo">
-        <br><br>
-
-        <button type="submit">Guardar</button>
-
-    </form>
-    </section>
-
-      <p id="mensaje" class="oculto"></p>
-     
-    <section>
-          <h2>Alumnos registrados</h2>
-          <p id="cantidadAlumnos"></p>
-          <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Carrera</th>
-                    <th>Correo</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="listaAlumno"></tbody>
-          </table>
-    </section>
-
-    </main>
-
-</body>
+                </form>
+            </section>
 
 
+            <section class="lista-container">
+                <h2>Alumnos registrados</h2>
+                <p id="cantidadAlumnos"></p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Carrera</th>
+                            <th>Correo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaAlumno"></tbody>
+                </table>
+            </section>
+
+            <div id="mensaje" class="mensaje"></div>
+
+        </main>
+
+    </body>
 
 </html>
