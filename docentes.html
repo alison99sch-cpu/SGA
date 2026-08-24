@@ -4,19 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="JS/docentes.js" defer></script>
-    <title>Document</title>
+    <title>Gestión docentes</title>
 </head>
 <body>
     <header>
-    <h1>Sistema de Gestión Académica</h1>
+    <nav>
+            <a href="index.html">Inicio</a>
+            <a href="alumnos.html">Alumnos</a>
+            <a href="docentes.html">Docentes</a>
+    </nav>
     </header>
 
 
     <main>
-     <form id="FormDocent">
+      <section class="formul">
 
+        <h2>Cargar datos docentes</h2>
+
+     <form id="FormDocent">
+      <label for="nombre">Nombre</label>
+      <input type="text">
+       <br><br>
+
+      <label for="especialidad">Especialidad</label>
+      <input type="text">
+      <br><br>
+      
+      <label for="correo">Correo electrónico</label>
+      <input type="email">
+      <br><br>
+
+      <button type="submit">Guardar</button>
         
      </form>
+     </section>
     </main>
  
   <footer></footer>  

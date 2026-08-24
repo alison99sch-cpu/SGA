@@ -28,6 +28,7 @@ Durante el desarrollo del proyecto se incorporarán progresivamente nuevas tecno
 Actualmente:
 - HTML5
 - JavaScript
+-CSS
 
 Próximamente:
 - CSS3
@@ -43,7 +44,23 @@ Próximamente:
 ## Estado del proyecto
 
 - Versión: 
-Clase 02
+Clase 10 - Estructura actual
+
+SGA/
+|
+|-- index.html
+|-- alumnos.html
+|-- docentes.html
+|
+|-- CSS/
+|    |--estilos.css
+|
+|-- JS/
+     |--alumnos.js
+     |--docentes.js 
+
+
+
 
 ## Autor
 Schneeberger Alison
