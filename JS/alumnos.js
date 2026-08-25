@@ -179,8 +179,9 @@ init()
 // 11/08/2026 proyecto proyecto
 const formulario = document.querySelector("#formulario")
 const mensaje = document.querySelector("#mensaje")
-// ...
+//const listaAlumnos = document.querySelector("#listaAlumnos")
 let alumnoEditandoId = null;
+
 
 
 
@@ -201,7 +202,7 @@ formulario.addEventListener("submit", function (event) {
    }
 
    if (nombre.legth < 3) {
-   mostrarMensaje("El nombre debe tenr al menos 3 caracteres!!!", "msj-error")
+   mostrarMensaje("El nombre debe tener al menos 3 caracteres!!!", "msj-error")
    return
    }
 
@@ -210,12 +211,12 @@ formulario.addEventListener("submit", function (event) {
 
     if (alumnoEditandoId === null) {
 
-        const alumno = {
+        const alumno = [{
             id: Date.now(),//Para generar un número unico internamente.
             nombre: nombre,
             carrera: carrera,
             correo: correo
-        }
+        }]
 
 
         mostrarMensaje("Alumno guardado correctamente", "msj-exito");
@@ -256,7 +257,7 @@ function obtAlumnos() {
     return [] //Evita que me devuelva null.
 }
 
-const listaAlumnos = document.querySelector("#listaAlumno")
+const listaAlumnos = document.querySelector("#listaAlumnos")
 
 
 function mostrarAlumnos(alumnos) {
@@ -306,7 +307,7 @@ listaAlumnos.addEventListener("click", (e) => {
         eliminarAlumno(id)
     }
 
-    if (e.target.classList.contains("btn-editar")) {
+    if (e.target.classList.contains("btn-eliminar")) {
        const id = Number(e.target.dataset.id)
         if (confirmar) { //Significa "Si confirmar es verdadero" no hace falta escribir  "confirmar == true".
         eliminarAlumno(id)
@@ -322,7 +323,7 @@ listaAlumnos.addEventListener("click", (e) => {
 })
 
 function editarAlumno(id) {
-    const alumnos = obtenerAlumnos
+    const alumnos = obtAlumnos
     const alumno = alumnos.find(alumno => alumno.id === id)
     Document.querySelector("#nombre").value = alumno.nombre;
     Document.querySelector("#carrera").value = alumno.carrera;
