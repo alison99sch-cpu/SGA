@@ -1,6 +1,7 @@
 const mensaje = document.querySelector("#mensaje")
 
 let docenteEditandoId = null;
+let docenteEditar = null;
 
 const formulario = document.querySelector("#formulario")
 formulario.addEventListener("submit", function (event) {
@@ -43,13 +44,29 @@ formulario.addEventListener("submit", function (event) {
         docente.nombre = nombre
         docente.especialidad = especialidad
         docente.correo = correo
+        
+        const datosActuales = {
+            nombre: nombre,
+            especialidad: especialidad,
+            correo: correo
+        }
+
+   
+        if(JSON.stringify(datosActuales) === JSON.stringify(docenteEditar)) {
+            mostrarMensaje("No se han realizado cambios!!!", "msj-error")
+            return
+        }
+
+
         docenteEDitandoId = null;
+        
         formulario.querySelector("buton").textContent = "Guardar"
 
         mostrarMensaje("Docente actualizado con exito!!!", "msj-exito")
     }
 
-    localStorage.setItem("docentes", JSON.stringify(docentes))
+    //localStorage.setItem("docentes", JSON.stringify(docentes))
+    obtDatos("docentes", docentes)
 
    
 
@@ -57,23 +74,11 @@ formulario.addEventListener("submit", function (event) {
 
 });
 
-function mostrarMensaje(texto, tipo) {
-    mensaje.textContent = texto; //Qué es lo que quiero que diga el mensaje
-    mensaje.ClassName = `mensaje ${tipo}` //Qué tipo o clase de formato quiero que tenga
-    mensaje.computedStyleMap.display = "block"
 
-    setTimeout(() => {
-        mensaje.style.display = "none"
-    }, 3000);
-}
 
 // Función para cargar docentes:
 function obtDocentes() {
-    const datos = localStorage.getItem("docentes")
-    if (datos) {
-        return JSON.parse(datos)
-    }
-    return []
+    return obtDatos("docentes")
 }
 
 //Para que se muestre la lista de docentes:
@@ -122,24 +127,22 @@ function eliminarDocente(id) {
 
 listaDocentes.addEventListener("click", (e) => {
     const boton_el = e.target.closest(".btn-eliminar")
-    const confirmar = confirm("¿Esta seguro de que desea eliminar este seguro?")
+    
 
 if(boton_el) {
     const id = Number(boton_el.dataset.id)
-    eliminarDocente(id)
-} if(e.target.classlist.contains("btn-eliminar")) {
-    const id = Number(e.target.dataset.id)
+    const confirmar = confirm("¿Esta seguro de que desea eliminar este seguro?")
+    
     if(confirmar){
         eliminarDocente(id)
     }
+}
 
     const boton_ed = e.target.closest(".btn-editar")
     if(boton_ed){
         const id = Number(boton_ed.dataset.id)
         editarDocente(id)
     }
-}
-
 })
 
 function editarDocente(id){
@@ -148,6 +151,13 @@ function editarDocente(id){
     Document.querySelector("#nombre").value = docente.nombre;
     Document.querySelector("#especialidad").value = docente.especialidad;
     Document.querySelector("#correo").value = docente.correo;
+
+    docenteEditar = {
+        nombre: docente.nombre,
+        especialidad: docente.especialidad,
+        correo: docente.correo
+    }
+
     docenteEditandoId=id;
     formulario.querySelector("button").textContent = "Actualizar docente"
     document.querySelector("#nombre").focus()
