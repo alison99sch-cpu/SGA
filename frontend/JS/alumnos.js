@@ -182,6 +182,9 @@ const mensaje = document.querySelector("#mensaje")
 //const listaAlumnos = document.querySelector("#listaAlumnos")
 let alumnoEditandoId = null;
 let alumnoEditar = null; 
+const btnCancelar = document.querySelector("#btnCancelar")
+btnCancelar.style.display="none"
+const btnGuardar = document.querySelector("#btnGuardar")
 
 
 
@@ -212,16 +215,16 @@ formulario.addEventListener("submit", function (event) {
 
     if (alumnoEditandoId === null) {
 
-        const alumno = [{
+        const alumno = {
             id: Date.now(),//Para generar un número unico internamente.
             nombre: nombre,
             carrera: carrera,
             correo: correo
-        }]
+        }
 
-
-        mostrarMensaje("Alumno guardado correctamente", "msj-exito");
         alumnos.push(alumno)
+        mostrarMensaje("Alumno guardado correctamente", "msj-exito");
+        
     } else {
         const alumno = alumnos.find(alumno => alumno.id === alumnoEditandoId)
         alumno.nombre = nombre
@@ -239,7 +242,7 @@ formulario.addEventListener("submit", function (event) {
         // return 
         // } <= Es lo memi que abajo:
         if(JSON.stringify(datosActuales) === JSON.stringify(alumnoEditar)){
-        mostrarMensaje("No se han realizado cambos!!!", "msj-error")
+        mostrarMensaje("No se han realizado cambos!!!", "msj-adv")
         return 
         }
 
@@ -300,7 +303,7 @@ function eliminarAlumno(id) {
     if (alumnoEditandoId == id) {
         formulario.reset()
         alumnoEditandoId = null
-        formulario.querySelector("button").textContent = "Guardar"
+        btnGuardar.textContent = "Guardar"
     }
 
     mostrarMensaje("Alumno eliminado correctamente", "msj-exito")
@@ -342,10 +345,22 @@ function editarAlumno(id) {
     }
 
     alumnoEditandoId = id;
-    formulario.querySelector("button").textContent = "Actualizar alumno"
+    btnCancelar.style.display="inline-block"
+    btnGuardar.textContent = "Actualizar alumno"
     document.querySelector("#nombre").focus()
 
 }
+
+function cancelarEdicion(){
+    formulario.reset()
+    alumnoEditandoId = null
+    alumnoEditar = null
+    btnGuardar.textContent = "Guardar"
+    btnCancelar.style.display="none"
+    document.querySelector("#nombre").focus()
+}
+
+btnCancelar.addEventListener("click", cancelarEdicion)
 
 const alumnos = obtAlumnos() //Esto y la línea de abajo tienen la función de mostrar la tabla ni bien se ingresa
 mostrarAlumnos(alumnos)

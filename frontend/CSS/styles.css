@@ -29,7 +29,7 @@ nav a {
 }
 
 nav a.activo {
-    background-color: rgb(231, 199, 199);
+    background-color: rgb(142, 76, 76);
 }
 
 main {
@@ -147,10 +147,17 @@ th {
 
 .msj-error {
     background-color: rgb(132, 6, 6);
+    color:#000000;
 }
 
 .msj-exito {
     background-color: rgb(168, 245, 154);
+    color:rgb(0, 0, 0)
+}
+
+.msj-adv {
+    background-color: rgb(240, 236, 129);
+    color: #000000;
 }
 
 .btn-editar, .btn-eliminar {
@@ -239,4 +246,17 @@ color:rgb(155, 230, 205)
 .tarjeta-deshabilitada:hover {
 transform: none;
 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.acciones-form {
+    display:flex;
+    gap: 10px;
+}
+
+.btnCancelar {
+    background-color: rgb(91, 31, 49);
+}
+
+.btnCancelar:hover {
+    background-color:  rgb(150, 87, 106);
 }
