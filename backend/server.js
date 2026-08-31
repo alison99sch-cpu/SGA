@@ -1,9 +1,6 @@
 const express = require("express")
 const app = express()
-
-app.listen(3000, () => {
-    console.log("Servidor escuchando en http://localhost:3000")
-})
+app.use(express.json())//Cualquier info q obtengo debe ser en formato json
 
 const alumnos = [{
     id: 1,
@@ -67,6 +64,27 @@ const maestro = maestros.find(b => b.id === id)
 res.json(maestro)
 }) 
 
+//POST
+app.post("/alumnos", (req, res)=>{
+    const nuevoAlumno = req.body
+    alumnos.push(nuevoAlumno)
+    res.json({mensaje:"Alumno registrado correctamente"})
+    
+})
 
+//PUT
+app.put("/alumnos/:id", (req,res) => {
+    const id = Number(req.params.id)
+    const alumno = alumnos.find(alumno => alumno.id === id)
+    alumno.id = req.body.id
+    alumno.nombre = req.body.nombre
+    alumno.carrera = req.body.carrera
+    res.json({mensaje: "Alumno actualizado correctamente"})
+
+})
+
+app.listen(3000, () => {
+    console.log("Servidor escuchando en http://localhost:3000")
+})
 
 
