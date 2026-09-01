@@ -44,3 +44,6 @@ Content-Type: application/json
 
 ###
 get http://localhost:3000/alumnos/2
+
+###
+delete http://localhost:3000/alumnos/2
