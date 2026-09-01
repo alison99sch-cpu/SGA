@@ -1,21 +1,24 @@
+const express = require("express")
+const router = express.Router()
 
+router.get("/", obtenerAlumnos)
 
 
 //GET
-router.get("/", (req, res) => {
+router.get("/", (req, res) => {           
     res.JSON(docentes)
 })
 
 router.get("/:id", (req, res) => {
 const id = Number(req.params.id)
-docente = docentes.find(b => b.id === id)
-res.json(mdocente)
+const docente = docentes.find(b => b.id === id)
+res.json(docente)
 }) 
 
 //POST crear uno nuevo
 router.post("/", (req, res)=>{
-    const nuevoAlumno = req.body
-    docentes.push(nuevoAlumno)
+    const nuevoDocente = req.body
+    docentes.push(nuevoDocente)
     res.json({mensaje:"docente registrado correctamente"})
     
 })
@@ -32,10 +35,11 @@ router.put("/:id", (req,res) => {
 })
 
 
-
 //DELETE eliminar
 router.delete("/:id", (req,res) => {
     const id = Number(req.params.id)
     docentes = docentes.filter(docente => docente.id !== id)
     res.json({mensaje: "docente eliminado correctamente"})
 })
+
+module.exports = router 

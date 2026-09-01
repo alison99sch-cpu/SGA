@@ -1,4 +1,5 @@
 const express = require("express")
+const { obtenerAlumnos } = require("../controllers/alumnos.controller")
 const router = express.Router()
 
 router.get("/", obtenerAlumnos)
@@ -42,5 +43,7 @@ app.get("/alumnos/:id", (req, res) => {
     const alumno = alumnos.find(a => a.id ===id)
     res.json(alumno)
 })
+
+
 
 module.exports = router 

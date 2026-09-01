@@ -3,5 +3,4 @@ function obtenerAlumnos(req,res) {
 }
 
 
-
 module.exports = {obtenerAlumnos}
