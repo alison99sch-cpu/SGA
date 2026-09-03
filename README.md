@@ -29,15 +29,12 @@ Actualmente:
 - HTML5
 - JavaScript
 -CSS
-
-Próximamente:
-- CSS3
-
-- React
-
+- Express
 - Node.js
 
-- Express
+Próximamente:
+
+- React
 
 - MongoDB
 
@@ -69,6 +66,11 @@ backend
 - Persistencia mediante localStorage.
 - Organización de código y refactorización.
 - Separación inicial entre Frontend y Backend.
+- Implementación de validaciones para los datos recibidos mediante req.body.
+- Uso de status 400 para datos invalidos.
+- Status 404 para alumno no encntrado.
+- Status 201 para registrar nuevo alumno.
+- Manejo básico de errores.
 
 ## Autor
 Schneeberger Alison

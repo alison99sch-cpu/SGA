@@ -33,7 +33,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:3000/alumnos/2
+PUT http://localhost:3000/alumnos/11
 Content-Type: application/json
 
 {
@@ -46,4 +46,16 @@ Content-Type: application/json
 get http://localhost:3000/alumnos/2
 
 ###
-delete http://localhost:3000/alumnos/2
+delete http://localhost:3000/alumnos/25
+
+
+###
+POST http://localhost:3000/alumnos
+Content-Type: application/json
+
+{
+    "id": 2,
+    "nombre": 4153413,
+    "carrera": "Programación"
+
+}
