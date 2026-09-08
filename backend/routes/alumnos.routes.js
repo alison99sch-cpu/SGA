@@ -12,8 +12,6 @@ router.post("/", crearAlumno)
 //PUT editar
 router.put("/:id", actualizarAlumno)
 
-
-
 //DELETE eliminar
 router.delete("/:id", eliminarAlumno)
 
