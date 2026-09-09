@@ -28,15 +28,16 @@ Durante el desarrollo del proyecto se incorporarán progresivamente nuevas tecno
 Actualmente:
 - HTML5
 - JavaScript
--CSS
+- CSS
 - Express
 - Node.js
+- MongoDB
 
 Próximamente:
 
 - React
 
-- MongoDB
+
 
 ## Estado del proyecto
 
@@ -71,6 +72,13 @@ backend
 - Status 404 para alumno no encntrado.
 - Status 201 para registrar nuevo alumno.
 - Manejo básico de errores.
+- Instalación de Mongoose.
+- Creación de la conexión con MomgoDB.
+- Creación del Schema y modelo Alumno.
+- Reemplazo del array en memoria por una conexión de MongoDB.
+- Modificación de GET/alumnos para consultar MongoDB mediante mongoose.
+- Prueba de la API con datos almacenados en MongoDB.
+
 
 ## Autor
 Schneeberger Alison
