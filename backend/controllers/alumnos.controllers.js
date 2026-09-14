@@ -26,6 +26,19 @@ async function crearAlumno(req, res){
         return res.status(400).json({
             mensaje:"El nombre no puede ser numerico"})
     }
+    if(typeof legajo != "number"){
+        return res.status(400).json({
+            mensaje: "El legajo debe ser si o si un número"
+        })
+    }
+    const existe = await Alumno.findOne({
+        legajo
+    })
+    if(existe){
+        return res.status(400).json({
+            mensaje: "El legajo ya existe"
+        })
+    }
 
     const nuevoAlumno = await Alumno.create({
         legajo,
@@ -38,9 +51,10 @@ async function crearAlumno(req, res){
 }
 
 async function actualizarAlumno(req,res) {
+    const {nombre, carrera, correo} = req.body
     const alumno = await Alumno.findOneAndUpdate(
         {legajo: Number(req.params.id)},
-        req.body,
+        {nombre, carrera, correo},
         {returnDocument:"after"}
 
     )

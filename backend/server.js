@@ -4,6 +4,8 @@ app.use(express.json())//Cualquier info q obtengo debe ser en formato json
 const alumnosRoutes = require("./routes/alumnos.routes")
 app.use("/alumnos", alumnosRoutes)
 const conectarDB = require("./config/database")
+require("dotenv").config()
+const PORT = process.env.PORT
 
 conectarDB()
 
@@ -18,6 +20,6 @@ conectarDB()
 
 
 
-app.listen(3000, () => {
-    console.log("Servidor escuchando en http://localhost:3000")
+app.listen(PORT, () => {
+    console.log(`Servidor escuchando en http://localhost:${PORT}`)
 })

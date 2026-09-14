@@ -1,7 +1,9 @@
 const mongoose = require("mongoose")
 
 const alumnoSchema = new mongoose.Schema({
-    legajo: Number,
+    legajo: {
+        type: Number,
+        unique: true},
     nombre: String,
     carrera: String,
     correo: String
