@@ -186,8 +186,13 @@ const btnCancelar = document.querySelector("#btnCancelar")
 btnCancelar.style.display="none"
 const btnGuardar = document.querySelector("#btnGuardar")
 
+// async function cargarAlumnos(){
+//  const respuesta = await fetch("http://localhost:3000/alumnos")
+//  const alumnos = await respuesta.json()
+//  console.table(alumnos)
+// }
 
-
+// cargarAlumnos()
 
 formulario.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -264,8 +269,10 @@ formulario.addEventListener("submit", function (event) {
 
 
 
-function obtAlumnos() {
-    return obtDatos("alumnos")
+async function obtAlumnos() {
+   const respuesta = fetch("http://localhost:3000/alumnos")
+   const alumnos = (await respuesta).json()
+   return alumnos
 }
 
 const listaAlumnos = document.querySelector("#listaAlumnos")
@@ -276,13 +283,13 @@ function mostrarAlumnos(alumnos) {
     for (const alumno of alumnos) {
         listaAlumnos.innerHTML += `
     <tr>
-        <td>${alumno.id}</td>
+        <td>${alumno.legajo}</td>
         <td>${alumno.nombre}</td>
         <td>${alumno.carrera}</td>
         <td>${alumno.correo}</td>
         <td> 
-        <button class="btn-editar" data-id="${alumno.id}" title="Editar alumno" ><i class="fa-solid fa-pen"></i></button> 
-        <button class="btn-eliminar" data-id="${alumno.id}" title="Eliminar alumno" ><i class="fa-solid fa-trash"></i></button>
+        <button class="btn-editar" data-id="${alumno.legajo}" title="Editar alumno" ><i class="fa-solid fa-pen"></i></button> 
+        <button class="btn-eliminar" data-id="${alumno.legajo}" title="Eliminar alumno" ><i class="fa-solid fa-trash"></i></button>
         </td>
     <tr>
     `;
@@ -361,6 +368,9 @@ function cancelarEdicion(){
 }
 
 btnCancelar.addEventListener("click", cancelarEdicion)
-
-const alumnos = obtAlumnos() //Esto y la línea de abajo tienen la función de mostrar la tabla ni bien se ingresa
+async function iniciar(){
+const alumnos = await obtAlumnos() 
 mostrarAlumnos(alumnos)
+}
+
+iniciar()
