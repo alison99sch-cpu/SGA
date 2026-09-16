@@ -10,7 +10,7 @@ async function obtenerAlumno(req, res) {
     const alumno = await Alumno.findOne({
     legajo: Number(req.params.id)})
     if(!alumno){
-        return res.status(404).json({mensaje:"Alumno inexistente :("})
+        return res.status(404).json({mensaje:"Alumno inexistente"})
     }
     res.json(alumno)
 }

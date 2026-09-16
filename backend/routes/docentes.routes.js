@@ -1,45 +1,22 @@
 const express = require("express")
+const {obtenerDocentes, obtenerDocente, crearDocente, actualizarDocente, eliminarDocente} = require("../controllers/docentes.controllers")
 const router = express.Router()
 
-router.get("/", obtenerAlumnos)
+router.get("/", obtenerDocentes)
 
 
 //GET
-router.get("/", (req, res) => {           
-    res.JSON(docentes)
-})
-
-router.get("/:id", (req, res) => {
-const id = Number(req.params.id)
-const docente = docentes.find(b => b.id === id)
-res.json(docente)
-}) 
+router.get("/", obtenerDocente)
 
 //POST crear uno nuevo
-router.post("/", (req, res)=>{
-    const nuevoDocente = req.body
-    docentes.push(nuevoDocente)
-    res.json({mensaje:"docente registrado correctamente"})
-    
-})
+router.post("/", crearDocente)
 
 //PUT editar
-router.put("/:id", (req,res) => {
-    const id = Number(req.params.id)
-    const docente = docentes.find(docente => docente.id === id)
-    docente.id = req.body.id
-    docente.nombre = req.body.nombre
-    docente.carrera = req.body.carrera
-    res.json({mensaje: "docente actualizado correctamente"})
-
-})
+router.put("/:id", actualizarDocente)
 
 
 //DELETE eliminar
-router.delete("/:id", (req,res) => {
-    const id = Number(req.params.id)
-    docentes = docentes.filter(docente => docente.id !== id)
-    res.json({mensaje: "docente eliminado correctamente"})
-})
+router.delete("/:id", eliminarDocente)
+   
 
 module.exports = router 
