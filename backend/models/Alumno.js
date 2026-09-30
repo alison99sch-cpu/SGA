@@ -27,4 +27,4 @@ legajo: {
 const Alumno = mongoose.model("Alumno", alumnoSchema)
 const Docente = mongoose.model("Docente", docenteSchema)
 
-module.exports = { Alumno, Docente }
+module.exports = {Alumno, Docente}

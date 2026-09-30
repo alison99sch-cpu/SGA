@@ -209,7 +209,7 @@ formulario.addEventListener("submit", async function (event) {
     }
 
   
-
+try{
     //Post
     if (alumnoEditandoLegajo === null) {
 
@@ -228,8 +228,7 @@ formulario.addEventListener("submit", async function (event) {
             body: JSON.stringify(alumno)
         })
         if(!respuesta.ok){
-            mostrarMensaje("No se pudo guardar el alumno", "msj-error")
-            return 
+            throw new Error("La API respondió con un error!") 
         }
  
 
@@ -264,8 +263,7 @@ formulario.addEventListener("submit", async function (event) {
             })
         })
         if(!respuesta.ok){
-            mostrarMensaje("No se pudo actualizar el alumno", "msj-error")
-            return
+            throw new Error("La API respondió con un error!")
         }
 
         alumnoEditandoLegajo = null;
@@ -278,15 +276,21 @@ formulario.addEventListener("submit", async function (event) {
 
     await actualizarListaAlumnos()
     formulario.reset();
+} catch(error){
+    console.error(error.mensaje)
+    mostrarMensaje("No fue posible realizar la operación")
+}
 });
 
-
-
-
 async function obtAlumnos() {
+    try{
    const respuesta = await fetch(API_ALUMNOS)
    const alumnos = (await respuesta).json()
    return alumnos
+    }catch(error){
+      console.error(error.mensaje)
+      throw error
+    }
 }
 
 const listaAlumnos = document.querySelector("#listaAlumnos")
@@ -336,9 +340,12 @@ async function eliminarAlumno(legajo) {
 }
 
 async function actualizarListaAlumnos() {
+    try{
     const alumnos = await obtAlumnos()
     mostrarAlumnos(alumnos)
-    
+    }catch(error){ 
+        mostrarMensaje("No se puedo cargar la lista de alumnos", "msj-error")
+      }
 }
 
 listaAlumnos.addEventListener("click", (e) => {
