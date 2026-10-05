@@ -3,9 +3,8 @@ import Footer from "./components/Footer";
 import {Titulo} from "./components/Footer";
 import {TarjetaAlumno} from "./components/TarjetaAlumno";*/
 
-import {Incrementar} from "./components/Ejemplos/Incrementar";
-import cambiarTitulo from "./components/Ejemplos/CambiarTitulo";
-import {Adivina} from "./components/Ejemplos/Adivina";
+
+import TamanoTexto from "..src/Components/Ejemplos/TamanoTexto";
 function App()
 {  /* <>
    
@@ -19,10 +18,8 @@ function App()
     </>*/
  
     <>
-    {/* <Incrementar />
-    <br />
-    <CambiarTitulo /> */}
-    <Adivina />
+    
+    <TamanoTexto />
     
     </>
 
