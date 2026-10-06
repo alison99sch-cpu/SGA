@@ -4,9 +4,16 @@ import {Titulo} from "./components/Footer";
 import {TarjetaAlumno} from "./components/TarjetaAlumno";*/
 
 
-import TamanoTexto from "..src/Components/Ejemplos/TamanoTexto";
+
+
+// import TamanoTexto from "./components/Ejemplos/TamanoTexto";
+import {FormularioA} from "./components/FormularioA";
 function App()
-{  /* <>
+{  
+    // const [nombre, setNombre] = useState("")
+
+   
+    /* <>
    
     <Navbar />
     <Titulo texto="Sistema de Gestión Academica" color="White"/>
@@ -16,13 +23,18 @@ function App()
     nombre="Luz" carrera="Programación" edad="24"/>
     <Footer />
     </>*/
- 
+ return(
     <>
     
-    <TamanoTexto />
-    
-    </>
+   {/* <input value={nombre}
+   onChange={(e) => setNombre(e.target.value)}/>
 
+   <p>Hola {nombre}</p>  */}
+
+  <FormularioA />
+   
+    </>
+ )
 }
 
 export default App

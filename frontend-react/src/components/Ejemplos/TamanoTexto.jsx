@@ -9,7 +9,7 @@ function TamanoTexto(){
         <div>
         <button onClick={()=> setTamano("10px")}>Tamaño pequeño</button><br />
         <button onClick={()=> setTamano("20px")}>Tamaño mediano</button><br />
-        <button onClick={()=> setTamano("30x")}>Tamaño grande</button>
+        <button onClick={()=> setTamano("30px")}>Tamaño grande</button>
         </div>
         </>
     )
