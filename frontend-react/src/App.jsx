@@ -1,37 +1,29 @@
-/*import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import {Titulo} from "./components/Footer";
-import {TarjetaAlumno} from "./components/TarjetaAlumno";*/
+import { useEffect, useState } from "react"
 
 
 
 
-// import TamanoTexto from "./components/Ejemplos/TamanoTexto";
-import {FormularioA} from "./components/FormularioA";
+
 function App()
 {  
-    // const [nombre, setNombre] = useState("")
+const [nombre, SetNombre] = useState("")
 
-   
-    /* <>
-   
-    <Navbar />
-    <Titulo texto="Sistema de Gestión Academica" color="White"/>
-    <TarjetaAlumno 
-    nombre="Ana" carrera="Medicina" edad="21"/>
-     <TarjetaAlumno 
-    nombre="Luz" carrera="Programación" edad="24"/>
-    <Footer />
-    </>*/
+useEffect(()=> {
+   if (nombre){
+      document.title = `Hola ${nombre}`
+   }else{
+      document.title = `Mi app`
+   }
+}, [nombre])
+
  return(
     <>
     
-   {/* <input value={nombre}
-   onChange={(e) => setNombre(e.target.value)}/>
+  <input value={nombre}
+  onChange={(e)=> SetNombre(e.target.value)}
+  placeholder="Escribe tu nombre" />
 
-   <p>Hola {nombre}</p>  */}
-
-  <FormularioA />
+  <h2>Hola {nombre}</h2>
    
     </>
  )
