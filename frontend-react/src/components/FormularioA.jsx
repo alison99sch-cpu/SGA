@@ -1,34 +1,77 @@
 import { useState } from "react";
+const API_ALUMNOS = "http://localhost3000/alumnos"
 
 export function FormularioA(){
-    const [legajo, setLegajo] = useState("")
-    const [nombre, setNombre] = useState("")
-    const [correo, setCorreo] = useState("")
-    const [carrera, setCarrera] = useState("")
+ const [formulario, setFormulario] = useState({
+    legajo: "",
+    nombre: "",
+    carrera: "",
+    correo: ""
+})
+
+const [error, setError] = useState("")
+const [guardando, setGuardando] = useState(false)
+
+function manejarCambio(e) {
+    const {name, value} = e.target
+
+    setFormulario({
+        ...formulario, 
+        [name]: value
+    })
+}
     
 
-    function guardar(e){
+    async function guardar(e){
         e.preventDefault()
-        console.log(nombre)
-        console.log(correo)
-        console.log(legajo)
-        console.log(carrera)
+       setError("")
+       setGuardando(true)
+
+       try {
+        const alumno = {
+            ...formulario,
+            legajo: Number(formulario.legajo)
+        }
+        const respuesta = await fetch(API_ALUMNOS, {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(alumno)
+        })
+        if(!respuesta.ok){
+            throw new Error(`No se pudo guardar el alumno. Estado HTTP: ${respuesta.status}`)
+        }
+        setFormulario({
+            legajo: "",
+            nombre: "",
+            carrera: "",
+            correo: ""
+        })
+       }catch(error){
+        console.error("Error al gaurdar:", error)
+        setError(error.message || "No se pudo conectar con el servidor")
+       }finally{
+        setGuardando(false)
+       }
     }
 
     return(
         <>
         <form onSubmit={guardar}>
-            <input value={legajo} onChange={(e) => setLegajo(e.target.value)}/> <br />
-            <input value={nombre} onChange={(e) => setNombre(e.target.value)}/><br />
-             <input value={correo} onChange={(e) => setCorreo(e.target.value)}/><br />
-             <input value={carrera} onChange={(e) => setCarrera(e.target.value)}/> <br />
-            <button type="submit">Guardar</button><br />
-            <h2>Legajo: {legajo}</h2>
-            <h2>Nombre: {nombre}</h2>
-            <h2>Correo: {correo}</h2>
-            <h2>Carrera: {carrera}</h2>
-            
+            <label htmlFor="legajo">Legajo</label>
+            <input id="legajo" name="legajo" value={formulario.legajo} onChange={manejarCambio} required/> <br />
 
+            <label htmlFor="nombre">Nombre</label>
+            <input id="nombre" name="nombre" value={formulario.nombre} onChange={manejarCambio} required/><br />
+
+            <label htmlFor="correo">Correo</label>
+            <input id="correo" nombre="correo" value={formulario.correo} onChange={manejarCambio} required/><br />
+
+            <label htmlFor="carrera">Carrera</label>
+            <input id="carrera" nombre="carrera" value={formulario.carrera} onChange={manejarCambio} required/> <br />
+            
+            <button type="submit" disabled={guardando}>{guardando ? "Guardando..." 
+            : "Guardar" }</button><br />
+            {error && <p role="alert">{error}</p>}
         </form>
         </>
     )
