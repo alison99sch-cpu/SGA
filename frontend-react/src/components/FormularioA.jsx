@@ -1,7 +1,7 @@
 import { useState } from "react";
 const API_ALUMNOS = "http://localhost3000/alumnos"
 
-export function FormularioA(){
+export function FormularioA({onAlumnoCreado }){
  const [formulario, setFormulario] = useState({
     legajo: "",
     nombre: "",
@@ -46,6 +46,7 @@ function manejarCambio(e) {
             carrera: "",
             correo: ""
         })
+        onAlumnoCreado()
        }catch(error){
         console.error("Error al gaurdar:", error)
         setError(error.message || "No se pudo conectar con el servidor")
