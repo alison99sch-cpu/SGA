@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-const API_ALUMNOS = "http://localhost3000/alumnos"
+const API_ALUMNOS = "http://localhost:3000/alumnos"
 
 export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
     const [alumnos, setAlumnos] = useState([])
@@ -39,8 +39,8 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
                 const datos = await respuesta.json()
                 setAlumnos(datos)
 
-            } catch (Error) {
-                console.log("Error de conexión", Error)
+            } catch (Err) {
+                console.error("Error de conexión", Err)
                 setError("No se pudo cargar la lista de alumnos") 
             } finally {
                 setCargando(false)
@@ -55,7 +55,7 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
         return <p>Cargando alumnos...</p>
     }
     if (error) {
-        return <p role="alert">(error);
+        return <p role="alert">{error}
         </p>
     }
     return (

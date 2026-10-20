@@ -1,4 +1,4 @@
-const Alumno = require("../models/Alumno")
+const { Alumno } = require("../models/Alumno")
 
 async function obtenerAlumnos(req,res) {
     const alumnos = await Alumno.find()

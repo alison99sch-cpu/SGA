@@ -1,4 +1,4 @@
-const Docente = require("../data/docentes")
+const { Docente } = require("../data/docentes")
 
 async function obtenerDocentes(req,res) {
     const docentes = await Docente.find()

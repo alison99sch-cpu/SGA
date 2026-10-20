@@ -1,5 +1,5 @@
 import { useState } from "react";
-const API_ALUMNOS = "http://localhost3000/alumnos"
+const API_ALUMNOS = "http://localhost:3000/alumnos"
 
 export function FormularioA({ onAlumnoCreado, alumnoEditar, onCancelar }) {
     const [formulario, setFormulario] = useState({
@@ -74,16 +74,16 @@ export function FormularioA({ onAlumnoCreado, alumnoEditar, onCancelar }) {
                 <input id="nombre" name="nombre" value={formulario.nombre} onChange={manejarCambio} required /><br />
 
                 <label htmlFor="correo">Correo</label>
-                <input id="correo" nombre="correo" value={formulario.correo} onChange={manejarCambio} required /><br />
+                <input id="correo" name="correo" value={formulario.correo} onChange={manejarCambio} required /><br />
 
                 <label htmlFor="carrera">Carrera</label>
-                <input id="carrera" nombre="carrera" value={formulario.carrera} onChange={manejarCambio} required /> <br />
+                <input id="carrera" name="carrera" value={formulario.carrera} onChange={manejarCambio} required /> <br />
 
                 <button type="submit" disabled={guardando}>{guardando ? "Guardando..."
-                    : alumnoEditar ? "Guardar cambios" : "Guardar"}</button>
+                    : alumnoEditar ? "Guardar cambios" : "Guardar"}</button> <br />
 
                  {alumnoEditar && (<button type="button" onClick={cancelar}
-                 disabled={guardando}></button>)}
+                 disabled={guardando}>Cancelar</button>)}
                     <br />
                 {error && <p role="alert">{error}</p>}
             </form>
