@@ -7,7 +7,7 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
     const [error, setError] = useState("")
 
     async function eliminarAlumno(legajo) {
-        const confirmar = window.confirm("¿Está seguro de que desea eliinar este alumno?")
+        const confirmar = window.confirm("¿Está seguro de que desea eliminar este alumno?")
         if (!confirmar) {
             return
         } 
