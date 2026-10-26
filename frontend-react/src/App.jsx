@@ -1,38 +1,20 @@
-import { ListaAlumnos } from "./components/ListaAlumnos"
-import { FormularioA } from "./components/FormularioA"
-import { useState } from "react"
-import { FAQ } from "./components/FAQ"
-import { SelectorTema } from "./components/SelectorTema"
+import { FAQ } from "./pages/FAQ"
+import Alumnos from "./pages/Alumnos"
+import { LayoutPrin } from "./layouts/LayaoutPrin"
+import  Inicio  from "./pages/Inicio"
+import { Routes, Route } from "react-router-dom"
 function App() {
-   const [actualizar, setActualizar] = useState(0)
-   const [alumnoEditar, setAlumnoEditar] = useState(null)
-   function alumnoCreado() {
-      setActualizar(valor => valor + 1)
-      setAlumnoEditar(null)
-   }
 
-   function seleccionarAlumno(alumno) {
-      setAlumnoEditar(alumno)
-   }
 
    return (
-      <main>
-         < SelectorTema />
+      <Routes>
+         <Route path="/" element={<LayoutPrin />}>
+            <Route index element={<Inicio />} />
+            <Route path="alumnos" element={<Alumnos />} />
+            <Route path="ayuda" element={<FAQ />} />
+         </Route>
+      </Routes>
 
-         <FormularioA key={alumnoEditar?.legajo ?? "nuevo"}
-            onAlumnoCreado={alumnoCreado}
-            alumnoEditar={alumnoEditar} 
-            onCancelar={() => setAlumnoEditar(null)}/>
-            
-         <ListaAlumnos actualizar={actualizar}
-            onAlumnoCreado={alumnoCreado}
-            onEditarAlumno={seleccionarAlumno} />
-
-
-      <FAQ />      
-
-
-      </main>
    )
 }
 
