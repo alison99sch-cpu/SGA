@@ -17,9 +17,11 @@ export function SelectorTema(){
     return (
         <Box sx={{
             display: "flex",
-            justifyContent: "flex-end",
-            mb: 3,
-            width: "100%"
+            justifyContent: "center",
+            alignItems: "center",
+            mb: 0,
+            width: "auto",
+            flexShrink: 0
         }}>
         <MaterialUISwitch
         checked={modoOscuro}
@@ -28,4 +30,3 @@ export function SelectorTema(){
         </Box>  
     )
 }
-

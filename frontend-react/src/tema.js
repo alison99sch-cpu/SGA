@@ -5,17 +5,17 @@ const tema = createTheme({
         light: {
             palette:{
                 primary:{
-                    main: "#6eaabb",
-                    contrastText: "black"
+                    main: "#24748a",
+                    contrastText: "#ffffff"
                 },
                 secondary:{
-                    main:"#064976",
+                    main:"#29496e",
                     contrastText: "#fcfbf0"
 
                 },
                 background:{
-                    default:"#d4f3f8",
-                    paper:"#9acfed"
+                    default:"#f2f7fa",
+                    paper:"#ffffff"
                 },
                 text:{
                     primary: "#1b1c1e",
@@ -26,26 +26,24 @@ const tema = createTheme({
         },
 
         dark: {
-            palette:{
-                palette: {
+            palette: {
                     primary: {
-                        main:"#3d9f91",
-                        contrastText: "black"
+                        main:"#66c5b4",
+                        contrastText: "#10211e"
                     },
                     secondary: {
-                        main: "#37578e",
+                        main: "#8eaddf",
                         contrastText: "#feffea"
                     },
                     background:{
-                        default: "#050d1c",
-                        paper: "#232338"
+                        default: "#101923",
+                        paper: "#182531"
                     },
                     text:{
                         primary:"#f7f8fa",
-                        secondary:"#7bbeba"
+                        secondary:"#a9bacb"
                     },
-                    divider: "#2a374b"
-                }
+                    divider: "#344756"
             }
         }
     }

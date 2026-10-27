@@ -64,29 +64,30 @@ export function FormularioA({ onAlumnoCreado, alumnoEditar, onCancelar }) {
     }
 
     return (
-        <>
-        <h2>{alumnoEditar ? "Editar alumno" : "Nuevo alumno"}</h2>
+        <section className="sga-card sga-form">
+            <h2>{alumnoEditar ? "Editar alumno" : "Nuevo alumno"}</h2>
             <form onSubmit={guardar}>
                 <label htmlFor="legajo">Legajo</label>
-                <input id="legajo" name="legajo" value={formulario.legajo} onChange={manejarCambio} required /> <br />
+                <input id="legajo" name="legajo" value={formulario.legajo} onChange={manejarCambio} required />
 
                 <label htmlFor="nombre">Nombre</label>
-                <input id="nombre" name="nombre" value={formulario.nombre} onChange={manejarCambio} required /><br />
+                <input id="nombre" name="nombre" value={formulario.nombre} onChange={manejarCambio} required />
 
                 <label htmlFor="correo">Correo</label>
-                <input id="correo" name="correo" value={formulario.correo} onChange={manejarCambio} required /><br />
+                <input id="correo" name="correo" value={formulario.correo} onChange={manejarCambio} required />
 
                 <label htmlFor="carrera">Carrera</label>
-                <input id="carrera" name="carrera" value={formulario.carrera} onChange={manejarCambio} required /> <br />
+                <input id="carrera" name="carrera" value={formulario.carrera} onChange={manejarCambio} required />
 
-                <button type="submit" disabled={guardando}>{guardando ? "Guardando..."
-                    : alumnoEditar ? "Guardar cambios" : "Guardar"}</button> <br />
+                <div className="sga-form__actions">
+                    <button type="submit" disabled={guardando}>{guardando ? "Guardando..."
+                        : alumnoEditar ? "Guardar cambios" : "Guardar"}</button>
 
-                 {alumnoEditar && (<button type="button" onClick={cancelar}
-                 disabled={guardando}>Cancelar</button>)}
-                    <br />
-                {error && <p role="alert">{error}</p>}
+                    {alumnoEditar && (<button type="button" onClick={cancelar}
+                        disabled={guardando}>Cancelar</button>)}
+                </div>
+                {error && <p className="sga-form__error" role="alert">{error}</p>}
             </form>
-        </>
+        </section>
     )
 }

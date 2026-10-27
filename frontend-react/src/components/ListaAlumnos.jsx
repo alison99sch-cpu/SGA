@@ -52,25 +52,27 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
     )
 
     if (cargando) {
-        return <p>Cargando alumnos...</p>
+        return <p className="sga-status">Cargando alumnos...</p>
     }
     if (error) {
-        return <p role="alert">{error}
+        return <p className="sga-status" role="alert">{error}
         </p>
     }
     return (
-        <section>
+        <section className="sga-card sga-list">
             <h2>Alumnos</h2>
             {alumnos.length === 0 ? (<p>No hay alumnos registrados.</p>)
                 : (
-                    <ul style={{ listStyle: "none" }}>
+                    <ul className="sga-list__items">
                         {alumnos.map(alumno => (
-                            <li key={alumno.legajo}>
-                                {alumno.legajo} - {alumno.nombre} - {alumno.carrera}
-                                <br />
-                                <button type="button" onClick={() => onEditarAlumno(alumno)}>Editar</button> 
-                                <br />
-                                <button type="button" onClick={() => eliminarAlumno(alumno.legajo)}>Eliminar</button>
+                            <li className="sga-list__item" key={alumno.legajo}>
+                                <div className="sga-list__student">
+                                    {alumno.legajo} - {alumno.nombre} - {alumno.carrera}
+                                </div>
+                                <div className="sga-list__actions">
+                                    <button type="button" onClick={() => onEditarAlumno(alumno)}>Editar</button>
+                                    <button type="button" onClick={() => eliminarAlumno(alumno.legajo)}>Eliminar</button>
+                                </div>
                             </li>)
                         )}
                     </ul>
