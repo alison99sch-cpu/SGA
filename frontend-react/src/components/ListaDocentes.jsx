@@ -60,7 +60,7 @@ export function ListaDocentes({ actualizar, onDocenteCreado,  onEditarDocente}) 
     }
     return (
         <section className="sga-card sga-list">
-            <h2>Alumnos</h2>
+            <h2>Docentes</h2>
             {docente.length === 0 ? (<p>No hay docentes registrados.</p>)
                 : (
                     <ul className="sga-list__items">

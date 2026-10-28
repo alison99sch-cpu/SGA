@@ -70,8 +70,8 @@ async function actualizarAlumno(req,res) {
 
 async function eliminarAlumno(req,res) {
     
-    const alumnos = await Alumno.findOneAndDelete
-    {legajo: Number(req.params.id)}
+    const alumnos = await Alumno.findOneAndDelete(
+    {legajo: Number(req.params.id)})
     
     if(!alumnos){
          return res.status(404).json({

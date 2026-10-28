@@ -23,8 +23,8 @@ export default function Docentes() {
                 onCancelar={() => setDocenteEditar(null)} />
 
             <ListaDocentes actualizar={actualizar}
-                onAlumnoCreado={docenteCreado}
-                onEditarAlumno={seleccionarDocente} />
+                onDocenteCreado={docenteCreado}
+                onEditarDocente={seleccionarDocente} />
         </main>
     )
 }
