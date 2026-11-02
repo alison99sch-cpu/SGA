@@ -37,18 +37,30 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
     e.preventDefault();
     setError("");
     setMsjExito("");
-    const nombre= formulario.nombre.trim();
+    
+    const nombre = formulario.nombre.trim();
 
-
-    if(!formulario.codigo.trim() || !formulario.nombre.trim() || !formulario.cargaHoraria || !formulario.estado.trim()) {
+    if (
+      !formulario.codigo.trim() ||
+      !formulario.nombre.trim() ||
+      !formulario.cargaHoraria ||
+      !formulario.estado.trim()
+    ) {
       setError("Todos los campos son obligatorios!!!");
+      return;
+    }
+    if (formulario.descripcion.length > 200) {
+      setError("La descripción no puede superar los 200 caracteres");
       return;
     }
     if (
       !Number.isInteger(materia.cargaHoraria) ||
-      Number(materia.cargaHoraria) <= 0 || Number(materia.cargaHoraria) > 160
+      Number(materia.cargaHoraria) <= 0 ||
+      Number(materia.cargaHoraria) > 160
     ) {
-      setError("La carga horaria debe ser un número entero positivo entre 1 y 160");
+      setError(
+        "La carga horaria debe ser un número entero positivo entre 1 y 160",
+      );
       return;
     }
     if (!/^[A-Za-z]{2}\d+$/.test(formulario.codigo.trim())) {
@@ -57,8 +69,8 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
       );
       return;
     }
-    if (formulario.estado.trim() !== "ACTIVA" && formulario.estado.trim() !== "INACTIVA") {
-      setError("En estado solo se aceptan 'ACTIVA' o 'INACTIVA'");
+    if (formulario.estado !== "ACTIVA" && formulario.estado !== "INACTIVA") {
+      setError("En estado solo se aceptan ACTIVA o INACTIVA, sin espacios");
       return;
     }
     if (/^\d+$/.test(nombre)) {
@@ -73,7 +85,7 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
         method: editando ? "PUT" : "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(materia),
-      })
+      });
       if (respuesta.status === 400) {
         throw new Error("El código ya existe o los datos son inválidos");
       }
@@ -90,18 +102,15 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
         estado: "",
       });
       onMateriaCreada();
-      setMsjExito("Materia guardada con éxito");
+      setMsjExito("Materia creada exitosamente");
+      
     } catch (err) {
       console.error("Error al gaurdar:", err);
       setError(err.message || "No se pudo conectar con el servidor");
     } finally {
       setGuardando(false);
     }
-      
-    
   }
-
- 
 
   function cancelar() {
     onCancelar();
@@ -126,16 +135,16 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
           id="nombre"
           name="nombre"
           value={formulario.nombre}
-          onChange={manejarCambio} 
+          onChange={manejarCambio}
           required
         />
 
-         <label htmlFor="descripcion">Descripción</label>
+        <label htmlFor="descripcion">Descripción</label>
         <input
           id="descripcion"
           name="descripcion"
           value={formulario.descripcion}
-          onChange={manejarCambio} 
+          onChange={manejarCambio}
         />
 
         <label htmlFor="cargaHoraria">Carga Horaria (Cuatrimestral)</label>
@@ -176,12 +185,15 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
             {error}
           </p>
         )}
-        {msjExito && (
-          <p className="sga-form__success" role="alert">
-            {msjExito}
-          </p>
-        )}
+        {
+          msjExito && (
+            <p className="sga-form__success" role="alert">
+              {msjExito}
+            </p>
+          )
+        }
       </form>
     </section>
-  );
+  )
 }
+

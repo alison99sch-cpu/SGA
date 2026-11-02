@@ -4,14 +4,18 @@ import { useState} from "react"
 
 export default function Materias() {
     const [actualizar, setActualizar] = useState(0)
-
-
+   
 
     const [materiaEditar, setMateriaEditar] = useState(null)
     function materiaCreada() {
+
         setActualizar(valor => valor + 1)
         setMateriaEditar(null)
+        if (materiaEditar) {
+        alert("Materia actualizada con éxito")
+        }
     }
+
 
     function seleccionarMateria(materia) {
         setMateriaEditar(materia)

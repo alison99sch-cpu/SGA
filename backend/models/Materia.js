@@ -17,7 +17,7 @@ const materiaSchema = new mongoose.Schema(
         minlength: 4,
         maxlength: 50
     },
-    descripción: {
+    descripcion: {
         type: String,
         trim: true,
         maxlength: 200
