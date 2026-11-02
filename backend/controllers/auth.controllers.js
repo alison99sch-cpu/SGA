@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt")
 
 const login = async(req,res) => {
     try{
-        const {emails, password} = req.body 
+        const {email, password} = req.body 
 
         if(!email || !password){
             return req.status(400).json({

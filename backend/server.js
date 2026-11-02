@@ -3,12 +3,17 @@ const app = express()
 const cors = require("cors")
 app.use(express.json())//Cualquier info q obtengo debe ser en formato json
 app.use(cors())
+
 const alumnosRoutes = require("./routes/alumnos.routes")
 const docentesRoutes = require("./routes/docentes.routes")
 const materiasRoutes = require("./routes/materias.routes")
+const authroutes = require("./routes/authRoutes")
+
 app.use("/alumnos", alumnosRoutes)
 app.use("/docentes", docentesRoutes)
 app.use("/materias", materiasRoutes)
+app.use("/auth", authroutes)
+
 const conectarDB = require("./config/database")
 require("dotenv").config()
 const PORT = process.env.PORT
