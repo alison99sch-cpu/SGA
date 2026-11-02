@@ -20,6 +20,7 @@ export default function Header() {
                 <Link to="/">Inicio</Link>
                 <Link to="/alumnos">Alumnos</Link>
                 <Link to="/docentes">Docentes</Link>
+                <Link to="/materias">Materias</Link>
                 <Link to="/ayuda" aria-label="Ayuda">Ayuda</Link>
             </nav>
             <div className="sga-theme">

@@ -1,7 +1,7 @@
 GET http://localhost:3000/materias
 
 ###
-GET http://localhost:3000/materias/AAAA50
+GET http://localhost:3000/materias/
 
 
 ###
@@ -56,8 +56,9 @@ POST http://localhost:3000/alumnos
 Content-Type: application/json
 
 {
-    "id": 2,
-    "nombre": 4153413,
-    "carrera": "Programación"
+    "codigo": "AA30",
+    "nombre": "filosofia",
+    "cargaHoraria": 90,
+    "estado": "ACTIVA"
 
 }

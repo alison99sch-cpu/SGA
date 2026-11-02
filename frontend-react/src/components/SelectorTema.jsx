@@ -26,7 +26,7 @@ export function SelectorTema(){
         <MaterialUISwitch
         checked={modoOscuro}
         onChange={CambiarModo} 
-        inputProps={{"aria-laber":"Cambiar modo claro/oscuro"}}/>
+        /*inputProps={{"aria-laber":"Cambiar modo claro/oscuro"}}*//>
         </Box>  
     )
 }

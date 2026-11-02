@@ -1,6 +1,7 @@
 import { FAQ } from "./pages/FAQ"
 import Alumnos from "./pages/Alumnos"
 import Docentes from "./pages/Docentes"
+import Materias from "./pages/Materias"
 import { LayoutPrin } from "./layouts/LayaoutPrin"
 import  Inicio  from "./pages/Inicio"
 import { Routes, Route } from "react-router-dom"
@@ -13,6 +14,7 @@ function App() {
             <Route index element={<Inicio />} />
             <Route path="alumnos" element={<Alumnos />} />
             <Route path="docentes" element={<Docentes />} />
+            <Route path="materias" element={<Materias />} />
             <Route path="ayuda" element={<FAQ />} />
          </Route>
       </Routes>

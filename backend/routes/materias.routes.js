@@ -5,17 +5,17 @@ const router = express.Router()
 router.get("/", obtenerMaterias)
 
 
-//GET
+
 router.get("/:codigo", obtenerMateria)
 
-//POST crear uno nuevo
+
 router.post("/", crearMateria)
 
-//PUT editar
+
 router.put("/:codigo", actualizarMateria)
 
 
-//DELETE eliminar
+
 router.delete("/:codigo", eliminarMateria)
    
 
