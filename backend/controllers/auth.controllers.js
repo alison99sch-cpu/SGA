@@ -10,7 +10,7 @@ const login = async(req,res) => {
                 mensaje: "Se debe ingresar el email o la contraseña"
         })
         }
-        const usuario = await Usuario.findOne({email: email.trim().tolowerCase()}).select("+password")
+        const usuario = await Usuario.findOne({email: email.trim().toLowerCase()}).select("+password")
 
         if (!usuario) {
             return res.status(401).json({

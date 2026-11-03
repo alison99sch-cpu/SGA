@@ -6,7 +6,9 @@ const materiaSchema = new mongoose.Schema(
         type: String,
         unique: true,
         trim: true, 
-        match: /^[A-Z]{2}\d+$/, 
+        maxlength: 4,
+        minlength: 3,
+        /*match: /^[A-Z]{2}\d+$/, */
         required: true,
         uppercase: true,
     },

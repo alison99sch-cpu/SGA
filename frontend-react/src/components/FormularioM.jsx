@@ -14,6 +14,13 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
   const [error, setError] = useState("");
   const [msjExito, setMsjExito] = useState("");
   const [guardando, setGuardando] = useState(false);
+
+/*^[a-zA-Z]+$*/ 
+/**^\d+$ 
+  const letras =/^[a-zA-Z]+$/
+  const numeros = /^\d+$/
+  */
+
   const materia = {
     ...formulario,
     cargaHoraria: Number(formulario.cargaHoraria),
@@ -49,6 +56,12 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
       setError("Todos los campos son obligatorios!!!");
       return;
     }
+    /*if(formulario.codigo(letras).length !== 0 && formulario.codigo(numeros).length !== 0){
+      setError("El código debe contener tanto letras como números")
+    }*/
+    if(formulario.codigo.length > 4 || formulario.codigo.length < 3){
+      setError("El código debe tener máximo 4 y mínimo 3 caracteres")
+    }
     if (formulario.descripcion.length > 200) {
       setError("La descripción no puede superar los 200 caracteres");
       return;
@@ -63,12 +76,12 @@ export function FormularioM({ onMateriaCreada, materiaEditar, onCancelar }) {
       );
       return;
     }
-    if (!/^[A-Za-z]{2}\d+$/.test(formulario.codigo.trim())) {
+   /*if (!/^[A-Za-z]{2}\d+$/.test(formulario.codigo.trim())) {
       setError(
         "El código debe tener 2 letras seguidas de minimo 1 número (ejemplo: AB123)",
       );
       return;
-    }
+    }*/
     if (formulario.estado !== "ACTIVA" && formulario.estado !== "INACTIVA") {
       setError("En estado solo se aceptan ACTIVA o INACTIVA, sin espacios");
       return;
