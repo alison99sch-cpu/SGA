@@ -30,7 +30,7 @@ async function crearMateria(req, res){
 
 
   const letras = (codigo.match(/[a-zA-Z]/g) || []).length;
-  const numeros = (codigo.match(/[0-9]/g) || []).length;
+  const numeros = (codigo.match(/\d/g) || []).length;
 
     const existe = await Materia.findOne({
         codigo
@@ -43,13 +43,14 @@ async function crearMateria(req, res){
     if(!codigo || !nombre || !cargaHoraria || !estado){
         return res.status(400).json({mensaje:"Todos los campos son obligatorios!!"})
     }
+    if(codigo.length > 4 || letras < 2 || numeros < 1 || letras + numeros !== codigo.length){
+        return res.status(400).json({mensaje:"El codigo debe contener máximo 4 caracteres, mínimo 3. Por lo menos, 2 letras y 1 numero"})
+    }
 
     if(typeof nombre !== "string"){
         return res.status(400).json({mensaje:"El nombre no puede ser numerico"})
     }
-    if(letras !=2 || numeros < 1){
-        return res.status(400).json({mensaje:"El codigo debe contener 2 letras y minimo 1 numero"})
-    }
+    
       if(!Number.isInteger(cargaHoraria)){
         return res.status(400).json({mensaje:"La carga horaria debe ser un número entero"})
     }
@@ -81,8 +82,7 @@ async function actualizarMateria(req,res) {
     
     if(!nombre || !cargaHoraria || !estado){
         return res.status(400).json({mensaje:"No puede haber campos vacíos"})
-    }
-    
+    }  
     if(typeof nombre !== "string"){
         return res.status(400).json({mensaje:"El nombre no puede ser numerico"})
     }

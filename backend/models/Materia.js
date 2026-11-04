@@ -8,7 +8,6 @@ const materiaSchema = new mongoose.Schema(
         trim: true, 
         maxlength: 4,
         minlength: 3,
-        /*match: /^[A-Z]{2}\d+$/, */
         required: true,
         uppercase: true,
     },
