@@ -1,15 +1,17 @@
-import { FAQ } from "./pages/FAQ"
+/*import { FAQ } from "./pages/FAQ"
 import Alumnos from "./pages/Alumnos"
 import Docentes from "./pages/Docentes"
 import Materias from "./pages/Materias"
 import { LayoutPrin } from "./layouts/LayaoutPrin"
 import  Inicio  from "./pages/Inicio"
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route } from "react-router-dom"*/
+import Login from "./pages/Login"
 function App() {
 
 
    return (
-      <Routes>
+      < Login/>
+      /*<Routes>
          <Route path="/" element={<LayoutPrin />}>
             <Route index element={<Inicio />} />
             <Route path="alumnos" element={<Alumnos />} />
@@ -17,7 +19,7 @@ function App() {
             <Route path="materias" element={<Materias />} />
             <Route path="ayuda" element={<FAQ />} />
          </Route>
-      </Routes>
+      </Routes>*/
 
    )
 }
