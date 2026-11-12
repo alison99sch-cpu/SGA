@@ -11,7 +11,8 @@ function App() {
 
    return (
       < Login/>
-      /*<Routes>
+      /*
+      <Routes>
          <Route path="/" element={<LayoutPrin />}>
             <Route index element={<Inicio />} />
             <Route path="alumnos" element={<Alumnos />} />
@@ -19,7 +20,8 @@ function App() {
             <Route path="materias" element={<Materias />} />
             <Route path="ayuda" element={<FAQ />} />
          </Route>
-      </Routes>*/
+      </Routes>
+      */
 
    )
 }

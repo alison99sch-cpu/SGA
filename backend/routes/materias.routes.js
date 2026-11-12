@@ -1,22 +1,23 @@
 const express = require("express")
+const {verificarToken} = require("../middlewares/auth.middleware")
 const {obtenerMaterias, obtenerMateria, crearMateria, actualizarMateria, eliminarMateria} = require("../controllers/materias.controllers")
 const router = express.Router()
 
-router.get("/", obtenerMaterias)
+router.get("/", verificarToken, obtenerMaterias)
 
 
 
-router.get("/:codigo", obtenerMateria)
+router.get("/:codigo", verificarToken, obtenerMateria)
 
 
-router.post("/", crearMateria)
+router.post("/", verificarToken, crearMateria)
 
 
-router.put("/:codigo", actualizarMateria)
+router.put("/:codigo", verificarToken, actualizarMateria)
 
 
 
-router.delete("/:codigo", eliminarMateria)
+router.delete("/:codigo", verificarToken, eliminarMateria)
    
 
 module.exports = router 

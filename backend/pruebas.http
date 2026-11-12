@@ -71,3 +71,7 @@ Content-Type: application/json
     "email": "admin@sga.com",
     "password": "mini123!"
 }
+
+###
+GET http://localhost:3000/materias
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhZThjZWZjM2JjYTUwNWFkZjJjNjk0MiIsInJvbCI6ImFkbWluIiwiaWF0IjoxNzk0NTA4MzM4LCJleHAiOjE3OTQ1MTE5Mzh9.jqGm4VEbIwSY1h3phVrTEqIf3mlBXpoDk8HJl8Ltxkg

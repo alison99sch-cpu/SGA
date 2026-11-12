@@ -1,5 +1,6 @@
 const Usuario = require("../models/Usuario")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
 
 const login = async(req,res) => {
     try{
@@ -26,8 +27,17 @@ const login = async(req,res) => {
             })
         }
 
+        const token= jwt.sign({
+            id: usuario._id,
+            rol: usuario.rol
+        },
+        process.env.JWT_SECRET,
+        {
+            expiresIn: process.env.JWT_EXPIRES_IN || "2h"
+        })
         return res.status(200).json({
             mensaje: "Login correcto",
+            token,
             id: usuario._id,
             nombre: usuario.nombre,
             email: usuario.email,

@@ -31,7 +31,8 @@ export default function Login() {
             if (!respuesta.ok) {
                 throw new Error(datos.mensaje || "No se pudo iniciar sesión")
             }
-            setUsuario(datos.usuario)
+            localStorage.setItem("token", datos.token)
+            setUsuario(datos)
             setMensaje(datos.mensaje)
 
             setEmail("")
