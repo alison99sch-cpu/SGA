@@ -5,6 +5,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 import App from './App.jsx'
 import { tema } from '../src/tema.js'
 import { BrowserRouter } from 'react-router-dom'
+import AuthProvider from './context/AuthProvider.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -12,7 +13,9 @@ createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <ThemeProvider theme={tema} defaultMode='system'>
         <CssBaseline />
+        <AuthProvider>
         <App />
+        </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>
   </StrictMode>,

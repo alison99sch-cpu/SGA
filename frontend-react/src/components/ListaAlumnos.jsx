@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react"
+import {useAuth} from "../context/useAuth"
+
 const API_ALUMNOS = "http://localhost:3000/alumnos"
 
 export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
     const [alumnos, setAlumnos] = useState([])
     const [cargando, setCargando] = useState("")
     const [error, setError] = useState("")
+    const {token} = useAuth
 
     async function eliminarAlumno(legajo) {
         const confirmar = window.confirm("¿Está seguro de que desea eliminar este alumno?")
@@ -12,9 +15,13 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
             return
         } 
         try {
+
             const respuesta = await fetch(`${API_ALUMNOS}/${legajo}`,
                 {
-                    method: "DELETE"
+                    method: "DELETE",
+                    headers: {
+                    Authorization: `Bearer ${token}`
+                    }
                 }
             )
             if (!respuesta.ok) {

@@ -1,8 +1,20 @@
 import "../index.css"
 import { Link } from "react-router-dom"
 import { SelectorTema } from "../components/SelectorTema"
+import { useNavigate } from "react-router-dom"
+import {useAuth} from "../context/useAuth"
+import { Button } from "@mui/material"
 
 export default function Header() {
+    const {cerrarSesion} = useAuth()
+    const navigate = useNavigate()
+
+    const logout = () => {
+        cerrarSesion()
+        navigate("/login")
+    }
+
+
     return (
         <header className="sga-header">
             <Link className="sga-brand" to="/" aria-label="SGA - Inicio">
@@ -24,6 +36,11 @@ export default function Header() {
                 <Link to="/ayuda" aria-label="Ayuda">Ayuda</Link>
             </nav>
             <div className="sga-theme">
+                <Button type="button" color="inherit" variant="outlined" onClick={logout}
+                sx={{
+                    textTransform:"none", fontWeight: 600
+                }}>Cerrar sesión</Button>
+
                 <span className="sga-theme__label">Tema</span>
                 <SelectorTema />
             </div>
