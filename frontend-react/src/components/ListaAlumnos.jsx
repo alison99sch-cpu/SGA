@@ -7,7 +7,7 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
     const [alumnos, setAlumnos] = useState([])
     const [cargando, setCargando] = useState("")
     const [error, setError] = useState("")
-    const {token} = useAuth
+    const {token, usuario} = useAuth()
 
     async function eliminarAlumno(legajo) {
         const confirmar = window.confirm("¿Está seguro de que desea eliminar este alumno?")
@@ -77,9 +77,14 @@ export function ListaAlumnos({ actualizar, onAlumnoCreado,  onEditarAlumno}) {
                                     {alumno.legajo} - {alumno.nombre} - {alumno.carrera}
                                 </div>
                                 <div className="sga-list__actions">
+                                    {usuario?.rol === "admin" && (
                                     <button type="button" onClick={() => onEditarAlumno(alumno)}>Editar</button>
+                                    )}
+                                    {usuario?.rol === "admin" && (
                                     <button type="button" onClick={() => eliminarAlumno(alumno.legajo)}>Eliminar</button>
+                                    )}
                                 </div>
+                                
                             </li>)
                         )}
                     </ul>

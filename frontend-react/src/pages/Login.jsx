@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom"
 
 export default function Login() {
     const navigate = useNavigate()
-    const { setToken } = useAuth()
+    const { setToken, usuario, setUsuario } = useAuth()
 
     const theme = useTheme()
-    const [usuario, setUsuario] = useState(null)
+    
 
     const [error, setError] = useState("")
     const [cargando, setCargando] = useState(false)
@@ -37,6 +37,7 @@ export default function Login() {
                 throw new Error(datos.mensaje || "No se pudo iniciar sesión")
             }
             localStorage.setItem("token", datos.token)
+            localStorage.setItem("usuario", datos.usuario)
             setToken(datos.token)
             setUsuario(datos)
             setMensaje(datos.mensaje)

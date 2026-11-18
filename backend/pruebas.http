@@ -68,7 +68,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin@sga.com",
+    "email": "usuario@sga.com",
     "password": "mini123!"
 }
 
