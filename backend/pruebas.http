@@ -69,7 +69,7 @@ Content-Type: application/json
 
 {
     "email": "usuario@sga.com",
-    "password": "mini123!"
+    "password": "mini123"
 }
 
 ###

@@ -5,17 +5,18 @@ const {obtenerAlumnos, obtenerAlumno, crearAlumno, actualizarAlumno, eliminarAlu
 const router = express.Router()
 const {verificarRol} = require("../middlewares/rolMiddleware")
 
+
 router.get("/", verificarToken, obtenerAlumnos)
 router.get("/:id", verificarToken, obtenerAlumno)
  
 //POST crear uno nuevo
-router.post("/", verificarToken, verificarRol(admin), crearAlumno)
+router.post("/", verificarToken, verificarRol("admin"), crearAlumno)
 
 
 //PUT editar
-router.put("/:id", verificarToken, verificarRol(admin), actualizarAlumno)
+router.put("/:id", verificarToken, verificarRol("admin"), actualizarAlumno)
 
 //DELETE eliminar
-router.delete("/:id", verificarToken, verificarRol(admin), eliminarAlumno)
+router.delete("/:id", verificarToken, verificarRol("admin"), eliminarAlumno)
 
 module.exports = router 

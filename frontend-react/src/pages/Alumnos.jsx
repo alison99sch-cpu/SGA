@@ -5,7 +5,7 @@ import { useAuth } from "../context/useAuth"
 
 export default function Alumnos() {
     const [actualizar, setActualizar] = useState(0)
-    const usuario = useAuth()
+    const { usuario } = useAuth()
 
     const [alumnoEditar, setAlumnoEditar] = useState(null)
     function alumnoCreado() {
